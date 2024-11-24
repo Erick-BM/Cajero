@@ -15,20 +15,6 @@ public class UsuarioControlador {
 
     private final UsuarioServicio usuarioServicio;
 
-    // Mostrar formulario de registro
-    @GetMapping("/registro")
-    public String mostrarFormularioRegistro(Model model) {
-        model.addAttribute("usuario", new Usuario());
-        return "registro";
-    }
-
-    // Procesar registro de usuario
-    @PostMapping("/registro")
-    public String procesarRegistroUsuario(@ModelAttribute("usuario") Usuario usuario) {
-        usuarioServicio.guardar(usuario);
-        return "redirect:/iniciarSesion";
-    }
-
     // Mostrar formulario de inicio de sesión
     @GetMapping("/iniciarSesion")
     public String mostrarInicioSesion(Model model) {
@@ -36,15 +22,21 @@ public class UsuarioControlador {
         return "iniciarSesion";
     }
 
-    // Procesar inicio de sesión de usuario
+    // Procesar inicio de sesión
     @PostMapping("/iniciarSesion")
     public String procesarInicioSesion(@ModelAttribute("usuario") Usuario usuario, Model model) {
+        // Validar las credenciales del usuario
         Usuario usuarioAutenticado = usuarioServicio.validarUsuario(usuario.getNombre(), usuario.getContrasena());
+
         if (usuarioAutenticado != null) {
-            return "menuCajero"; // Cambiar a la página principal del cajero
+            // Credenciales correctas, redirigir al menú principal
+            model.addAttribute("usuario", usuarioAutenticado);
+            return "menuCajero"; // Redirige a la vista del menú principal
         } else {
-            model.addAttribute("error", "Credenciales incorrectas");
-            return "iniciarSesion";
+            // Credenciales incorrectas, mostrar mensaje de error
+            model.addAttribute("error", "Credenciales incorrectas. Por favor, inténtalo de nuevo.");
+            return "iniciarSesion"; // Vuelve a la página de inicio de sesión
         }
     }
 }
+
