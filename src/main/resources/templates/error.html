@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Cajero Automático</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8d7da;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .error-container {
+            max-width: 400px;
+            padding: 25px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border: 1px solid #f5c2c7;
+        }
+        h2 {
+            color: #842029;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 16px;
+            color: #842029;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #842029;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #5f181e;
+        }
+    </style>
+</head>
+<body>
+<div class="error-container">
+    <h2>Error</h2>
+    <p th:text="${error}">Ocurrió un error al procesar tu solicitud.</p>
+    <div class="button-container">
+        <button onclick="window.location.href='/menuCajero'">Volver al menú principal</button>
+    </div>
+</div>
+</body>
+</html>

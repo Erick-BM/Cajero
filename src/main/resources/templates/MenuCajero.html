@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú Principal - Cajero Automático</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://png.pngtree.com/thumb_back/fh260/background/20230523/pngtree-3d-cgi-atm-machine-isolated-on-dark-background-image_2605002.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        .menu-container {
+            max-width: 800px;
+            padding: 25px;
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+        h2 {
+            margin-bottom: 20px;
+            font-size: 28px;
+            color: white;
+            text-transform: uppercase;
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+            gap: 15px;
+        }
+        button {
+            padding: 15px;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            background-color: #e0e0e0; /* Gris clarito */
+            color: #333; /* Texto oscuro */
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        button:hover {
+            background-color: #d6d6d6;
+            transform: scale(1.05); /* Pequeño efecto de zoom */
+        }
+    </style>
+</head>
+<body>
+<div class="menu-container">
+    <h2>Menú Principal</h2>
+    <div class="button-grid">
+        <button onclick="window.location.href='/consultarSaldo'">Consulta de Saldo</button>
+        <button onclick="window.location.href='/retirarEfectivo'">Retiro de Efectivo</button>
+        <button onclick="window.location.href='/depositarEfectivo'">Depósito de Efectivo</button>
+        <button onclick="window.location.href='/transferirDinero'">Transferencia de Dinero</button>
+        <button onclick="window.location.href='/pagarServicios'">Pago de Servicios</button>
+        <button onclick="window.location.href='/reabastecerEfectivo'">Reabastecimiento</button>
+        <button onclick="window.location.href='/registrarTransacciones'">Registro de Transacciones</button>
+        <button onclick="window.location.href='/cerrarSesion'">Cerrar Sesión</button>
+        <button onclick="window.location.href='/ayuda'">Ayuda</button>
+    </div>
+</div>
+</body>
+</html>
