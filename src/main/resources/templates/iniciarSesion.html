@@ -61,6 +61,18 @@
             font-size: 14px;
             margin-top: 15px;
         }
+        .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: white;
+        }
+        .register-link a {
+            color: #02E038;
+            text-decoration: none;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -77,7 +89,11 @@
     <div class="error-message" th:if="${error}">
         <span th:text="${error}"></span>
     </div>
+
+    <!-- Enlace al formulario de registro -->
+    <div class="register-link">
+        ¿No tienes una cuenta? <a href="/registro">Regístrate aquí</a>
+    </div>
 </div>
 </body>
 </html>
-

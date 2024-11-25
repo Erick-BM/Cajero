@@ -2,6 +2,7 @@ package co.ucentral.cajero.Cajero.controladores;
 
 import co.ucentral.cajero.Cajero.persistencia.entidades.Usuario;
 import co.ucentral.cajero.Cajero.servicios.UsuarioServicio;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,18 +25,15 @@ public class UsuarioControlador {
 
     // Procesar inicio de sesión
     @PostMapping("/iniciarSesion")
-    public String procesarInicioSesion(@ModelAttribute("usuario") Usuario usuario, Model model) {
-        // Validar las credenciales del usuario
+    public String procesarInicioSesion(@ModelAttribute("usuario") Usuario usuario, HttpSession session, Model model) {
         Usuario usuarioAutenticado = usuarioServicio.validarUsuario(usuario.getNombre(), usuario.getContrasena());
 
         if (usuarioAutenticado != null) {
-            // Credenciales correctas, redirigir al menú principal
-            model.addAttribute("usuario", usuarioAutenticado);
-            return "menuCajero"; // Redirige a la vista del menú principal
+            session.setAttribute("usuario", usuarioAutenticado); // Guardar el usuario en la sesión
+            return "redirect:/menuCajero"; // Redirigir al menú principal
         } else {
-            // Credenciales incorrectas, mostrar mensaje de error
             model.addAttribute("error", "Credenciales incorrectas. Por favor, inténtalo de nuevo.");
-            return "iniciarSesion"; // Vuelve a la página de inicio de sesión
+            return "iniciarSesion"; // Volver a la página de inicio de sesión
         }
     }
 }

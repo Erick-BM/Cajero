@@ -18,3 +18,4 @@ public class SaldoConsultaRepositorio {
         throw new RuntimeException("Usuario no encontrado");
     }
 }
+

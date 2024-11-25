@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Principal - Cajero Automático</title>
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
         body {
             font-family: Arial, sans-serif;
             background: url('https://png.pngtree.com/thumb_back/fh260/background/20230523/pngtree-3d-cgi-atm-machine-isolated-on-dark-background-image_2605002.jpg') no-repeat center center fixed;
@@ -19,6 +14,7 @@
             justify-content: center;
             height: 100vh;
         }
+
         .menu-container {
             max-width: 800px;
             padding: 25px;
@@ -27,17 +23,20 @@
             text-align: center;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
         }
+
         h2 {
             margin-bottom: 20px;
             font-size: 28px;
             color: white;
             text-transform: uppercase;
         }
+
         .button-grid {
             display: grid;
             grid-template-columns: repeat(3, 1fr); /* 3 columnas */
             gap: 15px;
         }
+
         button {
             padding: 15px;
             font-size: 16px;
@@ -48,9 +47,19 @@
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
+
         button:hover {
             background-color: #d6d6d6;
             transform: scale(1.05); /* Pequeño efecto de zoom */
+        }
+
+        .logout-button {
+            background-color: #e74c3c; /* Rojo para destacar */
+            color: white;
+        }
+
+        .logout-button:hover {
+            background-color: #c0392b;
         }
     </style>
 </head>
@@ -65,7 +74,7 @@
         <button onclick="window.location.href='/pagarServicios'">Pago de Servicios</button>
         <button onclick="window.location.href='/reabastecerEfectivo'">Reabastecimiento</button>
         <button onclick="window.location.href='/registrarTransacciones'">Registro de Transacciones</button>
-        <button onclick="window.location.href='/cerrarSesion'">Cerrar Sesión</button>
+        <button class="logout-button" onclick="window.location.href='/cerrarSesion'">Cerrar Sesión</button>
         <button onclick="window.location.href='/ayuda'">Ayuda</button>
     </div>
 </div>
