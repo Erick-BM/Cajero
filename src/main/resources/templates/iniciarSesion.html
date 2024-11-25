@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión - Cajero Automático</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background: url('https://png.pngtree.com/thumb_back/fh260/background/20230523/pngtree-3d-cgi-atm-machine-isolated-on-dark-background-image_2605002.jpg') no-repeat center center fixed;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .login-container {
+            background-color: rgba(0, 0, 0, 0.8); /* Fondo semitransparente */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            width: 350px;
+            text-align: center;
+        }
+        .login-container h2 {
+            margin-bottom: 25px;
+            color: white;
+            font-size: 24px;
+            text-transform: uppercase;
+        }
+        .login-container input {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+        }
+        .login-container button {
+            width: 100%;
+            padding: 12px;
+            background-color: #e0e0e0; /* Gris claro */
+            color: #333; /* Texto oscuro */
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .login-container button:hover {
+            background-color: #d6d6d6;
+            transform: scale(1.05); /* Efecto de zoom */
+        }
+        .error-message {
+            color: #ff4c4c;
+            font-size: 14px;
+            margin-top: 15px;
+        }
+        .register-link {
+            margin-top: 20px;
+            font-size: 14px;
+            color: white;
+        }
+        .register-link a {
+            color: #02E038;
+            text-decoration: none;
+        }
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="login-container">
+    <h2>Inicio de Sesión</h2>
+
+    <form th:action="@{/iniciarSesion}" method="post">
+        <input type="text" id="username" name="nombre" placeholder="Nombre de usuario" required>
+        <input type="password" id="password" name="contrasena" placeholder="Contraseña" required>
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+
+    <!-- Mostrar mensaje de error -->
+    <div class="error-message" th:if="${error}">
+        <span th:text="${error}"></span>
+    </div>
+
+    <!-- Enlace al formulario de registro -->
+    <div class="register-link">
+        ¿No tienes una cuenta? <a href="/registro">Regístrate aquí</a>
+    </div>
+</div>
+</body>
+</html>
