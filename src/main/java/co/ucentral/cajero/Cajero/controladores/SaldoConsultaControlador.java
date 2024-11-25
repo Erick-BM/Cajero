@@ -1,6 +1,6 @@
 package co.ucentral.cajero.Cajero.controladores;
 
-import co.ucentral.cajero.Cajero.servicios.UsuarioServicio;
+import jakarta.servlet.http.HttpSession;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,14 +10,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class SaldoConsultaControlador {
 
-    private final UsuarioServicio usuarioServicio;
+    @GetMapping("/consultarSaldo")
+    public String mostrarSaldo(HttpSession session, Model model) {
+        // Obtener el usuario autenticado desde la sesión
+        Object usuario = session.getAttribute("usuario");
+        if (usuario == null) {
+            return "redirect:/iniciarSesion"; // Redirige si no hay usuario
+        }
 
-    @GetMapping("/consultaSaldo")
-    public String consultaSaldo(Model model) {
-        // Usuario de ejemplo para la consulta
-        String nombreUsuario = "usuarioEjemplo";
-        Double saldo = usuarioServicio.consultarSaldo(nombreUsuario);
-        model.addAttribute("saldo", saldo != null ? saldo : 0.0); // Default en caso de error
+        // Agregar el saldo del usuario al modelo
+        double saldo = ((co.ucentral.cajero.Cajero.persistencia.entidades.Usuario) usuario).getSaldo();
+        model.addAttribute("saldo", saldo);
+
+        // Mostrar la página de consulta de saldo
         return "ConsultaSaldo";
     }
 }
